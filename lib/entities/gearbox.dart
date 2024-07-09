@@ -1,6 +1,6 @@
 class Gearbox {
   int _gear = 0;
-
+  
   int get gear => _gear;
 
   void updateGear(int acceleration) {
@@ -17,6 +17,6 @@ class Gearbox {
     } else {
       _gear = 4;
     }
-    print('Marcha atual: $_gear');
+    print('Marcha atual: $gear');
   }
 }

@@ -1,4 +1,4 @@
-import 'package:project_car/entities/gearbox.dart';
+import 'package:car/entities/gearbox.dart';
 
 class Engine {
   final int _power;
@@ -21,7 +21,7 @@ class Engine {
   void turnOff() {
     if (_isOn) {
       _isOn = false;
-      print('Motor desligado com sucesso.');
+      print('Motor desligado com sucesso!');
     } else {
       print('Atenção: Motor já estava desligado!');
     }
@@ -29,10 +29,10 @@ class Engine {
 
   void speedUp() {
     if (_isOn) {
-      if (_acceleration < 150) {
+      if (acceleration < 150) {
         _acceleration += 25;
         _gearbox.updateGear(_acceleration);
-        print('Motor: $_acceleration km/h');
+        print('Motor: $_acceleration rpm');
       } else {
         print('Atenção: Aceleração máxima atingida!');
       }
@@ -43,10 +43,10 @@ class Engine {
 
   void speedDown() {
     if (_isOn) {
-      if (_acceleration > -50) {
+      if (acceleration > -50) {
         _acceleration -= 25;
         _gearbox.updateGear(_acceleration);
-        print('Motor: $_acceleration km/h');
+        print('Motor: $_acceleration rpm');
       } else {
         print('Atenção: Aceleração máxima ré atingida!');
       }

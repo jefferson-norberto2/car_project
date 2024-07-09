@@ -1,11 +1,14 @@
-import 'package:project_car/entities/engine.dart';
-import 'package:project_car/entities/tire.dart';
+import 'package:car/entities/engine.dart';
+import 'package:car/entities/tire.dart';
 
 abstract class Vehicle {
   final Engine _engine;
   final List<Tire> _tires;
 
   Vehicle(this._engine, this._tires);
+
+  int get currentSpeed => _engine.acceleration;
+  int get currentGear => _engine.gear;
 
   void turnOn() {
     _engine.turnOn();
@@ -15,16 +18,18 @@ abstract class Vehicle {
     _engine.turnOff();
   }
 
+  bool get isOn => _engine.state;
+
   void speedUp() {
     _engine.speedUp();
-    if (_engine.state) {
+    if (isOn) {
       _updateTireRotations();
     }
   }
 
   void speedDown() {
     _engine.speedDown();
-    if (_engine.state) {
+    if (isOn) {
       _updateTireRotations();
     }
   }
@@ -35,7 +40,4 @@ abstract class Vehicle {
           (_engine.strength * _engine.gear * 200) ~/ tire.size());
     }
   }
-
-  int get currentSpeed => _engine.acceleration;
-  int get currentGear => _engine.gear;
 }
